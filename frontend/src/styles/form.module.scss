@@ -1,23 +1,29 @@
-.signUpForm {
+.formContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  background-color: var(--primary-color-pacific-blue);
+  padding: 32px;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   width: 100%;
   position: relative;
   margin: auto auto;
 
-  .signUpFormHeader {
+  .formHeader {
     text-align: center;
     p {
       font-size: 16px;
       font-weight: 300;
-
-      #value {
-        color: red;
-      }
     }
   }
 
-  .signUpFormInput {
+  .formInput {
     input {
       width: 100%;
       height: 35px;
@@ -28,16 +34,24 @@
     }
   }
   
+  .forgotPassword {
+    font-size: 14px;
+    color: rgb(15, 15, 165);
+    margin-left: 3px;
+  }
+
   .signUpFormFooter {
     width: 100%;
     display: flex;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .error {
     display: flex;
     align-items: center;
-    
+    margin-top: -7px;
+    margin-bottom: 7px;
+
     .errorIcon {
       color: red;
       margin-right: 3px;
@@ -53,6 +67,8 @@
   .success {
     display: flex;
     align-items: center;
+    margin-top: -5px;
+    margin-bottom: 7px;
 
     .successIcon {
       color: green;
@@ -65,4 +81,13 @@
       font-weight: 700;
     }
   }
+
+  .inputFieldSubtext {
+    font-size: 15px;
+    margin: -7px 0 0 3px;
+  }
+}
+
+.loginForm {
+
 }

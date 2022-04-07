@@ -1,0 +1,21 @@
+.accountCreated {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  background-color: var(--primary-color-cornflower);
+  padding: 20px;
+  margin: 0 auto;
+
+  .accountCreatedText {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .accountCreatedEmail {
+    color: var(--primary-color-orange);
+  }
+
+  .accountCreatedButtons {
+    margin-top: 15px;
+  }
+}

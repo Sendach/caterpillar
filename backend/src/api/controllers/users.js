@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-
+import 'express-async-errors';
 import db from '../db/index.js';
 
 router.get('/', async (req, res) => {
@@ -17,18 +17,17 @@ router.post('/', async (req, res) => {
   }
 })
 
-router.get('/email/:email', async (req, res) => {
+router.get('/email/:email', async (req, res, next) => {
+  console.log('getting email')
   const { rows } = await db.query('SELECT * FROM accounts WHERE email = $1', [req.params.email]);
-
   if (rows) res.json(rows[0]);
-  else res.status(404).end();
 })
 
 router.get('/username/:username', async (req, res) => {
   const { rows } = await db.query('SELECT * FROM accounts WHERE username = $1', [req.params.username]);
 
   if (rows) res.json(rows[0]);
-  else res.status(404).end();
+  else throw Error();
 })
 
 export default router;

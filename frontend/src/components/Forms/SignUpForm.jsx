@@ -1,27 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'
 import userService from '../../services/users.js';
 import styles from '../../styles/form.module.scss';
 import Button from '../Buttons/Button';
 import { IoClose, IoCheckmarkSharp } from 'react-icons/io5';
 
 const SignUpForm = () => {
+  let navigate = useNavigate();
+  
   const [userSignUp, setUserSignUp] = useState({ email: '', username: '', name: '', password: ''});
-  const [duplicateEmail, setDuplicateEmail] = useState(false);
-  const [duplicateUsername, setDuplicateUsername] = useState(false);
+  const [duplicateEmail, setDuplicateEmail] = useState(null);
+  const [duplicateUsername, setDuplicateUsername] = useState(null);
 
-  const addUser = (event) => {
+  const addUser = async (event) => {
     event.preventDefault();
 
     Object.keys(userSignUp).forEach(key => {
       userSignUp[key] = userSignUp[key].toLowerCase();
     })
 
-    userService
-      .addUser(userSignUp)
-      .then(res => {
-        console.log('User successfully added to the database!');
-        setUserSignUp({ email: '', username: '', name: '', password: ''});
-      }).catch(err => console.log('User unable to be added to the database, the name is probably a duplicate.'));
+    if (userSignUp.password.length < 10 || userSignUp.username.length < 3) return;
+
+    const result = await userService.addUser(userSignUp);
+    if (result) {
+      setUserSignUp({ email: '', username: '', name: '', password: ''});
+      navigate('/account-created', { state: {email: userSignUp.email}});
+    } else console.log('Account creation error')
   }
 
   const handleSignupChange = (event) => {
@@ -34,6 +38,7 @@ const SignUpForm = () => {
   }
 
   const isEmailDuplicate = async () => {
+    if (userSignUp.email.length === 0) return;
     const result = await userService.getUserByEmail(userSignUp.email);
     if (result) {
       setDuplicateEmail(true);
@@ -52,12 +57,12 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className={styles.signUpForm}>
-      <div className={styles.signUpFormHeader}>
+    <div className={styles.form}>
+      <div className={styles.formHeader}>
         <h1>Welcome!</h1>
         <p>Let's create your account</p>
       </div>
-      <div className={styles.signUpFormInput}>
+      <div className={styles.formInput}>
         <form>
           <input
             type="text"
@@ -73,6 +78,7 @@ const SignUpForm = () => {
               ? <div className={styles.error}><IoClose size="1.1rem" className={styles.errorIcon}/> <p className={styles.errorMessage}>Email has already been taken</p></div>
               : <div className={styles.success}><IoCheckmarkSharp size="1.1rem" className={styles.successIcon}/> <p className={styles.successMessage}>We will email you to confirm</p></div>
           }
+          <p className={styles.inputFieldSubtext}>never shown to the public</p>
           <input
             type="text"
             name="username"
@@ -81,12 +87,15 @@ const SignUpForm = () => {
             placeholder="Username *"
             onBlur={isUsernameDuplicate}
           />
-          {userSignUp.username.length < 3
-            ? <div className={styles.error}><IoClose size="1.1rem" className={styles.errorIcon}/> <p className={styles.errorMessage}>Your username is too short</p></div>
+          {userSignUp.username.length === 0
+            ? null 
+            : userSignUp.username.length < 3
+              ? <div className={styles.error}><IoClose size="1.1rem" className={styles.errorIcon}/> <p className={styles.errorMessage}>Your username is too short</p></div>
             : duplicateUsername 
               ? <div className={styles.error}><IoClose size="1.1rem" className={styles.errorIcon}/> <p className={styles.errorMessage}>Your username is not available</p></div>
               : <div className={styles.success}><IoCheckmarkSharp size="1.1rem" className={styles.successIcon}/> <p className={styles.successMessage}>Your username is available</p></div>
           }
+          <p className={styles.inputFieldSubtext}>unique, no spaces, short</p>
           <input
             type="text"
             name="name"
@@ -94,6 +103,7 @@ const SignUpForm = () => {
             onChange={handleSignupChange}
             placeholder="Name"
           />
+          <p className={styles.inputFieldSubtext}>your full name, optional</p>
           <input
             type="text"
             name="password"
@@ -101,11 +111,18 @@ const SignUpForm = () => {
             onChange={handleSignupChange}
             placeholder="Password *"
           />
+          {userSignUp.password.length === 0
+            ? null
+            : userSignUp.password.length < 10 
+              ? <div className={styles.error}><IoClose size="1.1rem" className={styles.errorIcon}/> <p className={styles.errorMessage}>Your password is too short</p></div>
+              : <div className={styles.success}><IoCheckmarkSharp size="1.1rem" className={styles.successIcon}/> <p className={styles.successMessage}>Your password looks good</p></div>
+            }
+          <p className={styles.inputFieldSubtext}>at least 10 characters</p>
         </form>
       </div>
       <div className={styles.signUpFormFooter}>
         <Button text="Create Account" onClick={addUser}></Button>
-        <Button text="Login" onClick={addUser}></Button>
+        <Link to="/login"><Button text="Login"></Button></Link>
       </div>
     </div>
   );

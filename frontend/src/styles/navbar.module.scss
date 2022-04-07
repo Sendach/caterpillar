@@ -1,7 +1,19 @@
 .navbar {
   background-color: var(--primary-color-pacific-blue);
   width: 100%;
-  height: 75px;
+  height: 60px;
+
+  .logoSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-color-white);
+
+    .logoText {
+      font-size: 22px;
+      margin-left: 5px;
+    }
+  }
 }
 
 .navContainer {
