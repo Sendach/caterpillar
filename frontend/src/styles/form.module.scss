@@ -4,90 +4,93 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
-  background-color: var(--primary-color-pacific-blue);
-  padding: 32px;
-}
 
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  margin: auto auto;
-
-  .formHeader {
-    text-align: center;
-    p {
-      font-size: 16px;
-      font-weight: 300;
-    }
-  }
-
-  .formInput {
-    input {
-      width: 100%;
-      height: 35px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-      padding-left: 10px;
-    }
-  }
-  
-  .forgotPassword {
-    font-size: 14px;
-    color: rgb(15, 15, 165);
-    margin-left: 3px;
-  }
-
-  .signUpFormFooter {
-    width: 100%;
-    display: flex;
-    margin-top: 15px;
-  }
-
-  .error {
+  .incorrectLogin {
     display: flex;
     align-items: center;
-    margin-top: -7px;
-    margin-bottom: 7px;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background-color: #591b0c;
+    font-size: 16px;
+  }
 
-    .errorIcon {
-      color: red;
-      margin-right: 3px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    background-color: var(--primary-color-pacific-blue);
+  
+    .formHeader {
+      text-align: center;
+      p {
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+  
+    .formInput {
+      input {
+        width: 100%;
+        height: 35px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+        padding-left: 10px;
+      }
     }
     
-    .errorMessage {
-      color: darkred;
-      font-size: 16px;
-      font-weight: 700;
+    .forgotPassword {
+      font-size: 14px;
+      color: rgb(15, 15, 165);
+      margin-left: 3px;
     }
-  }
   
-  .success {
-    display: flex;
-    align-items: center;
-    margin-top: -5px;
-    margin-bottom: 7px;
-
-    .successIcon {
-      color: green;
-      margin-right: 3px;
+    .signUpFormFooter {
+      width: 100%;
+      display: flex;
+      margin-top: 15px;
     }
-
-    .successMessage {
-      color: green;
-      font-size: 16px;
-      font-weight: 700;
+  
+    .error {
+      display: flex;
+      align-items: center;
+      margin-top: -7px;
+      margin-bottom: 7px;
+  
+      .errorIcon {
+        color: red;
+        margin-right: 3px;
+      }
+      
+      .errorMessage {
+        color: darkred;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+    
+    .success {
+      display: flex;
+      align-items: center;
+      margin-top: -5px;
+      margin-bottom: 7px;
+  
+      .successIcon {
+        color: green;
+        margin-right: 3px;
+      }
+  
+      .successMessage {
+        color: green;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+  
+    .inputFieldSubtext {
+      font-size: 15px;
+      margin: -7px 0 0 3px;
     }
   }
-
-  .inputFieldSubtext {
-    font-size: 15px;
-    margin: -7px 0 0 3px;
-  }
-}
-
-.loginForm {
-
 }

@@ -18,16 +18,25 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/email/:email', async (req, res, next) => {
-  console.log('getting email')
-  const { rows } = await db.query('SELECT * FROM accounts WHERE email = $1', [req.params.email]);
-  if (rows) res.json(rows[0]);
+  const param = req.params;
+  try {
+    const { rows } = await db.query('SELECT * FROM accounts WHERE email = $1', [param.email]);
+    if (rows.length !== 0) res.json(rows[0]);
+    else throw {name: 'NotFound', message: `Cannot find email ${param.email}`};
+  } catch (error) {
+    next(error); 
+  }
 })
 
-router.get('/username/:username', async (req, res) => {
-  const { rows } = await db.query('SELECT * FROM accounts WHERE username = $1', [req.params.username]);
-
-  if (rows) res.json(rows[0]);
-  else throw Error();
+router.get('/username/:username', async (req, res, next) => {
+  const param = req.params;
+  try {
+    const { rows } = await db.query('SELECT * FROM accounts WHERE username = $1', [param.username]);
+    if (rows.length !== 0) res.json(rows[0]);
+    else throw {name: 'NotFound', message: `Cannot find username ${param.username}`};
+  } catch (error) { 
+    next(error);
+  }
 })
 
 export default router;

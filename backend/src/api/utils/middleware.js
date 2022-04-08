@@ -1,14 +1,10 @@
 const errorHandler = (error, request, response, next) => {
-  logger.error(error.message)
-  console.log('in here')
-  if (error.name === 'CastError') {
-    console.log('1 bitch')
-    return response.status(400).send({ error: 'malformatted id' })
+  console.log(error.name)
+  if (error.name === 'NotFound') {
+    return response.status(404).send( { error: error.message } )
   } else if (error.name === 'ValidationError') {
-    console.log('2 bitches')
-    return response.status(400).json({ error: error.message })
+    return response.status(400).json( { error: error.message } )
   }
-
   next(error)
 }
 
