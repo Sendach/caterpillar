@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import styles from '../../styles/navbar.module.scss';
+import { Link } from 'react-router-dom';
+import styles from './navbar.module.scss';
 import Button from '../Buttons/Button';
 import { IoLogoReact } from 'react-icons/io5'
 
@@ -9,21 +9,19 @@ const Navbar = ({ toggleSignUpPopUpForm }) => {
       <div className={styles.navContainer}>
         <Link to="/" className={styles.logoSection}>
           <IoLogoReact size="2rem" />
-          <h1 className={styles.logoText}>LOGO</h1>
+          <h1 className={styles.logoText}>MovieApp</h1>
         </Link>
         <div className={styles.navLinks}>
-          <li className={styles.navLink}>
-            <a>Home</a>
-          </li>
-          <li className={styles.navLink}>
-            <a>Store</a>
-          </li>
-          <li className={styles.navLink}>
-            <a>Support</a>
-          </li>
-          <li className={styles.navLink}>
-            <a>Blog</a>
-          </li>
+          <Link to="/movie" >
+            <li className={styles.navLink}>
+              <a>Movies</a>
+            </li>
+          </Link>
+          <Link to="/tv" >
+            <li className={styles.navLink}>
+              <a>TV</a>
+            </li>
+          </Link>
         </div>
         <div className={styles.panel}>
           <Link to="/register"><Button text="Sign Up" /></Link>

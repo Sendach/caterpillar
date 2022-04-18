@@ -7,17 +7,17 @@
 }
 
 body {
-  background-color: var(--primary-color-prussian-blue);
-  color: var(--primary-color-white);
+  background-color: var(--primary-color-white);
+  color: var(--primary-color-black);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 p {
   font-size: 26px;
 }
 
-h1, h2, h3, h4, h5, h6, p, button { 
+h1, h2, h3, h4, h5, h6, p, button, input { 
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -37,6 +37,7 @@ li{
   --primary-color-orange: #FB8500;
   --primary-color-white: #FFFFFF;
   --primary-color-black: #242424;
+  --primary-color-border: #e3e3e3;
   --primary-color-white-rgb: 255, 255, 255;
   --primary-color-black-rgb: 36, 36, 36;
 }

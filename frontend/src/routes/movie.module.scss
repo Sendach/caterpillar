@@ -1,0 +1,23 @@
+.cac {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+  margin-top: 55px;
+  
+  .castList {
+    display: flex;
+    column-gap: 12px;
+  }
+  h4 {
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  span {
+    color: var(--primary-color-pacific-blue);
+  }
+}
+
+.bullet {
+  margin: 0 5px;
+}

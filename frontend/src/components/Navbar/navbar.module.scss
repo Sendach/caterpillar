@@ -2,12 +2,13 @@
   background-color: var(--primary-color-pacific-blue);
   width: 100%;
   height: 60px;
-
+  color: var(--primary-color-white);
   .logoSection {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: var(--primary-color-white);
+    margin-left: 235px;
 
     .logoText {
       font-size: 22px;
@@ -19,15 +20,24 @@
 .navContainer {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 100%;
+
 }
 
 .navLinks {
   display: flex;
   justify-content: space-evenly;
+  margin-left: 25px;
 
   .navLink {
     margin: 0 20px;
+    color: var(--primary-color-white)
   }
+}
+
+.panel {
+  margin-left: auto;
+  margin-right: 225px;
+
 }

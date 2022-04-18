@@ -1,96 +1,105 @@
-.formContainer {
+.signUpFormContainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
+}
 
-  .incorrectLogin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50px;
-    background-color: #591b0c;
-    font-size: 16px;
+.logInFormContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+}
+
+.incorrectLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background-color: #591b0c;
+  font-size: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: var(--primary-color-pacific-blue);
+
+  .formHeader {
+    text-align: center;
+    p {
+      font-size: 16px;
+      font-weight: 300;
+    }
   }
 
-  .form {
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    background-color: var(--primary-color-pacific-blue);
-  
-    .formHeader {
-      text-align: center;
-      p {
-        font-size: 16px;
-        font-weight: 300;
-      }
-    }
-  
-    .formInput {
-      input {
-        width: 100%;
-        height: 35px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: none;
-        padding-left: 10px;
-      }
-    }
-    
-    .forgotPassword {
-      font-size: 14px;
-      color: rgb(15, 15, 165);
-      margin-left: 3px;
-    }
-  
-    .signUpFormFooter {
+  .formInput {
+    .input {
       width: 100%;
-      display: flex;
-      margin-top: 15px;
+      height: 35px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+      padding-left: 10px;
     }
+  }
   
-    .error {
-      display: flex;
-      align-items: center;
-      margin-top: -7px;
-      margin-bottom: 7px;
-  
-      .errorIcon {
-        color: red;
-        margin-right: 3px;
-      }
-      
-      .errorMessage {
-        color: darkred;
-        font-size: 16px;
-        font-weight: 700;
-      }
+  .forgotPassword {
+    font-size: 14px;
+    color: rgb(15, 15, 165);
+    margin-left: 3px;
+  }
+
+  .formFooter {
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+   
+  }
+
+  .error {
+    display: flex;
+    align-items: center;
+    margin-top: -7px;
+    margin-bottom: 7px;
+
+    .errorIcon {
+      color: red;
+      margin-right: 3px;
     }
     
-    .success {
-      display: flex;
-      align-items: center;
-      margin-top: -5px;
-      margin-bottom: 7px;
-  
-      .successIcon {
-        color: green;
-        margin-right: 3px;
-      }
-  
-      .successMessage {
-        color: green;
-        font-size: 16px;
-        font-weight: 700;
-      }
+    .errorMessage {
+      color: darkred;
+      font-size: 16px;
+      font-weight: 700;
     }
+  }
   
-    .inputFieldSubtext {
-      font-size: 15px;
-      margin: -7px 0 0 3px;
+  .success {
+    display: flex;
+    align-items: center;
+    margin-top: -5px;
+    margin-bottom: 7px;
+
+    .successIcon {
+      color: green;
+      margin-right: 3px;
     }
+
+    .successMessage {
+      color: green;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .inputFieldSubtext {
+    font-size: 15px;
+    margin: -7px 0 0 3px;
   }
 }

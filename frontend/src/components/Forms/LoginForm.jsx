@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/form.module.scss';
 import userService from '../../services/users.js';
 import Button from '../Buttons/Button';
+import Submit from '../Buttons/Submit';
 
 const LoginForm = () => {
   let navigate = useNavigate();
@@ -46,7 +47,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className={styles.formContainer}>
+    <div className={styles.logInFormContainer}>
       {incorrectLogin && <div className={styles.incorrectLogin}>Incorrect username, email or password</div>}
       <div className={styles.form}>
         <div className={styles.formHeader}>
@@ -54,8 +55,9 @@ const LoginForm = () => {
           <p>Let's get you logged in</p>
         </div>
         <div className={styles.formInput}>
-          <form>
+          <form onSubmit={authenticateUser}>
             <input
+              className={styles.input}
               type="text"
               name="login"
               value={userLogin.login}
@@ -63,18 +65,19 @@ const LoginForm = () => {
               placeholder="Email / Username"
             />
             <input
+              className={styles.input}
               type="text"
               name="password"
               value={userLogin.password}
               onChange={handleLoginChange}
               placeholder="Password"
             />
+            <Link to="/login/forgot-password" className={styles.forgotPassword}>I forgot my password</Link>
+            <div className={styles.formFooter}>
+              <Submit text="Log In" />
+              <Link to="/register"><Button text="Create Account"></Button></Link>
+            </div> 
           </form>
-          <Link to="/login/forgot-password" className={styles.forgotPassword}>I forgot my password</Link>
-          <div className={styles.signUpFormFooter}>
-            <Button text="Log In" onClick={authenticateUser}></Button>
-            <Link to="/register"><Button text="Create Account"></Button></Link>
-          </div> 
         </div>
       </div>
     </div>

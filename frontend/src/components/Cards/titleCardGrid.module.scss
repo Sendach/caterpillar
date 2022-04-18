@@ -1,0 +1,7 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(170px, 1fr));
+  grid-gap: 30px;
+  grid-template-areas: "double-poster double-poster";
+  margin-bottom: 50px;
+}

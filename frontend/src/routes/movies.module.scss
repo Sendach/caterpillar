@@ -1,0 +1,21 @@
+.pageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+
+  h1 {
+    font-size: 26px;
+  }
+}
+
+.content {
+  display: flex;
+  column-gap: 50px;
+}
