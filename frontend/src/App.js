@@ -26,7 +26,7 @@ const App = () => {
       <Router>
         <Navbar toggleSignUpPopUpForm={toggleSignUpPopUpForm}/>
         <Routes>
-          <Route path="/" element={<Home signUpPopupForm={signUpPopupForm}/>} />
+          <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/account-created" element={<AccountCreated />} />
