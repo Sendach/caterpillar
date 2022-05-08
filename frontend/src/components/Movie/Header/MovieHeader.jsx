@@ -29,7 +29,7 @@ const MovieHeader = ({ movie }) => {
                 </span>
                 <span className={styles.bullet}>{'\u2022'}</span>
                 <span>
-                  {movie.runtime ? minToMovieDuration(movie.runtime) : minToMovieDuration(movie.episode_run_time[0])}
+                  {movie.hasOwnProperty('runtime') ? minToMovieDuration(movie.runtime) : minToMovieDuration(movie.episode_run_time[0])}
                 </span>
               </div>
             </div>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import userService from './services/users.js';
 import { Navbar } from './components/index';
 import styles from './styles/globals.module.scss';
-import { Home, Register, AccountCreated, Login, ForgotPassword, Movies, Movie, TVShows, TVShow } from './routes/index';
+import { Home, Register, AccountCreated, Login, ForgotPassword, Movies, Movie, TVShows, TVShow } from './pages/index';
 
 const App = () => {
   const [users, setUsers] = useState([]);

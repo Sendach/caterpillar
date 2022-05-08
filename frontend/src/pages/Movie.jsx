@@ -11,7 +11,7 @@ const Movie = () => {
   useEffect(() => {
     const getMovie = async () => {
       const movie = await movieService.getMovieById(id);
-
+      console.log(movie)
       const directors = [], writers = [];
       movie.credits.crew.map(crew => {
         if (crew.job === 'Director') directors.push(crew.name);
@@ -34,6 +34,7 @@ const Movie = () => {
           stars: starNames
         }
       })
+    
     }
 
     getMovie();

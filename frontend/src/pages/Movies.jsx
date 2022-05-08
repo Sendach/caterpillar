@@ -5,19 +5,20 @@ import movieService from '../services/moviedb.js';
 import styles from './movies.module.scss';
 
 const Movies = () => {
-  const [selectedFilter, setSelectedFilter] = useState('popularity.desc');
   const [movies, setMovies] = useState([]);
 
-  const handleSortFilterSelection = async (filter) => {
-    setSelectedFilter(filter);
-    const results = await movieService.getMoviesSortedBy(filter, 1);
+  const handleSortFilterSelection = async (e) => {
+    e.preventDefault();
+    const results = await movieService.getMoviesSortedBy(e.target.value, 1);
     setMovies(results.results)
+    console.log(results.results)
   }
 
   useEffect(() => {
     const initMovieList = async () => {
-      const results = await movieService.getMoviesSortedBy(selectedFilter, 1);
+      const results = await movieService.getMoviesSortedBy('popularity.desc', 1);
       setMovies(results.results)
+      console.log(results.results)
     }
     initMovieList();
   }, [])
